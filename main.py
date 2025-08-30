@@ -28,7 +28,7 @@ df = pd.read_csv('bestsellers.csv')
 #print("\n=== BASIC STATS (numeric cols) ===")
 #print(df.describe())
 
-# A couple of sanity checks that are handy
+# A couple of sanity checks
 #print("\n=== UNIQUE GENRES ===")
 #print(df["Genre"].unique())
 
@@ -86,10 +86,9 @@ print("\n=== AVERAGE PRICE BY GENRE ===")
 avg_price_by_genre = df.groupby("Genre")["Price"].mean()
 print(avg_price_by_genre)
 
-# STEP 6 -  EXPORT ALL RESULTS TO ONE EXCEL FILE ===
+# STEP 6 — EXPORT ALL RESULTS TO ONE EXCEL FILE
 # Requires: pip3 install openpyxl
 
-# STEP 6 — EXPORT ALL RESULTS TO ONE EXCEL FILE
 with pd.ExcelWriter("analysis_results.xlsx", engine="openpyxl") as writer:
     # 1) Top authors
     author_counts.head(10).to_frame("Count").to_excel(writer, sheet_name="Top Authors")
